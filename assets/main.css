@@ -1,0 +1,56 @@
+@media(min-width: 300px) {
+    .libraryContainer {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .bookTitle {
+        display: flex;
+        flex-direction: column;
+        font: bold italic 1.5em "Fira Sans", serif;
+        /* margin: auto; */
+        text-indent: 5px;
+
+    }
+
+    ul.bookUl {
+        flex-basis: 30%;
+    }
+
+    .listItem {
+        font-size: .75em;
+        list-style-type: disc;
+        margin-left: 25px;
+        font: normal .75em "Fira Sans", serif;
+    }
+}
+
+html {
+    height: 100%;
+    background: content-box radial-gradient(rgb(138, 98, 46), rgb(235, 208, 135));
+}
+
+#mainHeading {
+    text-align: center;
+    background-color: #dbc394;
+    padding: 30px;
+    border: 4mm ridge rgba(80, 50, 5, 0.63);
+}
+
+
+.bookUl {
+    border: medium double #33210c;
+}
+
+ul > li {
+    list-style-type: none;
+    font-weight: bold;
+}
+
+ul { 
+    padding: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 1em;
+    background-color: #dbc394;
+}
