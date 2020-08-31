@@ -1,7 +1,7 @@
 @media(min-width: 300px) {
     .libraryContainer {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap: wrap;
     }
 
@@ -15,7 +15,8 @@
     }
 
     ul.bookUl {
-        flex-basis: 30%;
+        padding-right: 5px;
+        margin: 5px 5px;
     }
 
     .listItem {
@@ -26,9 +27,49 @@
     }
 }
 
+.addBookContainer, .addBookForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-items: flex-end;
+}
+
+.addBookForm {
+    display: none;
+    background-color: #b6e7ba;
+    border: medium double #18421c;
+    padding: 5px;
+}
+
+.addBookForm > input {
+    flex-basis: 1;
+    margin: 2px;
+}
+
+label {
+    margin: 1px 3px;
+}
+
+#addBook, .submit {
+    background-color: rgb(69, 194, 102);
+    font: italic small-caps bold 16px/2 cursive;
+    margin: 5px 0px;
+    padding: 0px 6px;
+}
+
+.deleteButton {
+    background-color: rgb(207, 87, 87);
+    font: italic small-caps bold 16px/2 cursive;
+    align-self: flex-end;
+    margin: 5px 0px;
+    padding: 0px 6px;
+}
+
 html {
     height: 100%;
     background: content-box radial-gradient(rgb(138, 98, 46), rgb(235, 208, 135));
+    background-image: url('library_books_knowledge_information.jpg');
+    background-size: cover;
 }
 
 #mainHeading {
@@ -41,6 +82,8 @@ html {
 
 .bookUl {
     border: medium double #33210c;
+    display: flex;
+    flex-direction: column;
 }
 
 ul > li {
