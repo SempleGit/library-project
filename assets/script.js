@@ -1,5 +1,6 @@
 let myLibrary = [];
 const libraryContainer = document.querySelector(".libraryContainer");
+let bookid = 1000;
 
 let book1 = new Book("Lord of the Rings", "Tolkein", 1000, true);
 let book2 = new Book("Falling Free", "Bujold", 500, true);
@@ -11,6 +12,7 @@ function Book(title, author, pageCount, read) {
     this.author = author;
     this.pageCount = pageCount;
     this.read = read;
+    this.bookid = bookid++;
 }
 
 Book.prototype.info = function() {
@@ -26,15 +28,23 @@ Book.prototype.readStatus = function() {
     return read ? "Yes" : "No";
 }
 
+function clearAddBookForm() {
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("pageCount").value = "";
+    Array.from(document.getElementsByName("read")).find(btn => btn.checked = false);
+}
+
 function createBook() {
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
-    const pageCount = document.getElementById("pageCount").value;
+    const title = document.getElementById("title").value || "n/a";
+    const author = document.getElementById("author").value || "n/a";
+    const pageCount = document.getElementById("pageCount").value || "n/a";
     const read = Array.from(document.getElementsByName("read")).find(btn => btn.checked).value;
     toggleAddButton(false);
     toggleAddBookForm(true);
     const book = new Book(title, author, pageCount, read);
     addBookToLibrary(book);
+    clearAddBookForm();
 }
 
 function toggleAddButton(hide) {
@@ -61,11 +71,15 @@ function addBookToLibrary(book) {
 }
 
 function isBookRendered(book) {
-    return Array.from(libraryContainer.childNodes).some(node => myLibrary.indexOf(book) == node.getAttribute(["data-index"]));
+    return Array.from(libraryContainer.childNodes).some(node => book.bookid == node.getAttribute(["data-index"]));
 }
 
 function deleteBook(e) {
     libraryContainer.removeChild(e.target.parentNode);
+    const dataIndex = e.target.parentElement.getAttribute(["data-index"]);
+    const removeBook = myLibrary.find( ({ bookid }) => bookid == dataIndex);
+    myLibrary.splice(myLibrary.indexOf(removeBook), 1);
+    
 }
 
 function getDeleteButton() {
@@ -121,12 +135,12 @@ function render() {
             bookTitleLi.textContent = book.title;
             bookTitleLi.classList.add("bookTitle");
             bookUl.classList.add("bookUl");
-            bookUl.setAttribute(["data-index"], myLibrary.indexOf(book));
+            bookUl.setAttribute(["data-index"], book.bookid);
             bookUl.appendChild(bookTitleLi);   
             bookUl.appendChild(getDeleteButton());     
             
             for (key in book) {
-                if (book.hasOwnProperty(key) && key !== "title" && key !== "serialCount") {
+                if (book.hasOwnProperty(key) && key !== "title" && key !== "bookid") {
                     const bookLi = document.createElement("li");
                     const keyDisplay = key === "author" ? "Author" : key === "pageCount" ? "Page Count" : "Read";
                     
