@@ -2,17 +2,15 @@ let myLibrary = [];
 const libraryContainer = document.querySelector(".libraryContainer");
 let bookid = 1000;
 
-let book1 = new Book("Lord of the Rings", "Tolkein", 1000, true);
-let book2 = new Book("Falling Free", "Bujold", 500, true);
-let book3 = new Book("Wool", "Howey", 500, true);
-let book4 = new Book("Sand", "Howey", 500, false);
 
-function Book(title, author, pageCount, read) {
-    this.title = title;
-    this.author = author;
-    this.pageCount = pageCount;
-    this.read = read;
-    this.bookid = bookid++;
+class Book {
+    constructor(title, author, pageCount, read) {
+        this.title = title;
+        this.author = author;
+        this.pageCount = pageCount;
+        this.read = read;
+        this.bookid = bookid++;
+    }
 }
 
 Book.prototype.info = function() {
@@ -27,6 +25,11 @@ Book.prototype.readUpdate = function() {
 Book.prototype.readStatus = function() {
     return read ? "Yes" : "No";
 }
+
+let book1 = new Book("Lord of the Rings", "Tolkein", 1000, true);
+let book2 = new Book("Falling Free", "Bujold", 500, true);
+let book3 = new Book("Wool", "Howey", 500, true);
+let book4 = new Book("Sand", "Howey", 500, false);
 
 function clearAddBookForm() {
     document.getElementById("title").value = "";
