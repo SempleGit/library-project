@@ -8,7 +8,8 @@
     .bookTitle {
         display: flex;
         flex-direction: column;
-        font: bold italic 1.5em "Fira Sans", serif;
+        font-family: 'Bilbo Swash Caps', cursive;
+        font-size: 1.25rem;
         /* margin: auto; */
         text-indent: 5px;
 
@@ -20,10 +21,10 @@
     }
 
     .listItem {
+        font-family: 'Maitree', serif;
         font-size: .75em;
         list-style-type: disc;
         margin-left: 25px;
-        font: normal .75em "Fira Sans", serif;
     }
 }
 
@@ -36,7 +37,7 @@
 
 .addBookForm {
     display: none;
-    background-color: #b6e7ba;
+    background-color: #C5EBC3;
     border: medium double #18421c;
     padding: 5px;
 }
@@ -67,27 +68,29 @@ label {
 
 html {
     height: 100%;
-    background: content-box radial-gradient(rgb(138, 98, 46), rgb(235, 208, 135));
-    background-image: url('library_books_knowledge_information.jpg');
+    background-color: #A790A5;
     background-size: cover;
 }
 
 #mainHeading {
-    text-align: center;
-    background-color: #dbc394;
-    padding: 30px;
-    border: 4mm ridge rgba(80, 50, 5, 0.63);
+  background-color: #54414E;
+  border: 4mm ridge #875C74;
+  color: #C5EBC3;
+  font-family: 'Hind', sans-serif;
+  padding: 30px;
+  text-align: center;
 }
 
 
 .bookUl {
-    border: medium double #33210c;
+    border: medium double #875C74;
     display: flex;
     flex-direction: column;
 }
 
 ul > li {
     list-style-type: none;
+    
     font-weight: bold;
 }
 
@@ -95,5 +98,5 @@ ul {
     padding: 0px;
     margin-block-start: 0em;
     margin-block-end: 1em;
-    background-color: #dbc394;
+    background-color: #B7C8B5;
 }
